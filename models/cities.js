@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
-        state_id: {
+        stateId: {
             type: DataTypes.INTEGER,
             allowNull: false,
             len: [1]
