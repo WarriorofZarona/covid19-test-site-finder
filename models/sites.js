@@ -7,22 +7,67 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
+        address: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            len: [1]
+        },
+        cityId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            len: [1]
+        },
         stateId: {
             type: DataTypes.INTEGER,
             allowNull: false,
             len: [1]
+        },
+        walkIn: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: 0
+        },
+        driveThru: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: 0
+        },
+        isHospital: {
+
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: 0
+        },
+        hoursOfOp: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            len: [1]
+        },
+        qualifications: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+            len: [1]
+
         }
+
     });
 
-    City.associate = function (models) {
-        // We're saying that a Post should belong to an Author
-        // A Post can't be created without an Author due to the foreign key constraint
-        City.belongsTo(models.State, {
+    Site.associate = function (models) {
+        Site.belongsTo(models.State, {
             foreignKey: {
                 allowNull: false
             }
         });
     };
 
-    return City;
+
+    Site.associate = function (models) {
+        Site.belongsTo(models.City, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
+    return Site;
 };
