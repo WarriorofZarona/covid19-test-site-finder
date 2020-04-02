@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
             len: [1]
         },
         phone: {
-            type: Sequelize.ARRAY(Sequelize.STRING),
+            type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false,
             unique: true,
             validate: {
