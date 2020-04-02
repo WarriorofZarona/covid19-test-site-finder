@@ -22,6 +22,26 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             len: [1]
         },
+        phone: {
+            type: Sequelize.ARRAY(Sequelize.STRING),
+            allowNull: false,
+            unique: true,
+            validate: {
+                isValidPhoneNo: function (value) {
+                    if (!value) return value;
+
+                    var regexp = /^[0-9]+$/;
+                    var values = (Array.isArray(value)) ? value : [value];
+
+                    values.forEach(function (val) {
+                        if (!regexp.test(val)) {
+                            throw new Error("Number only is allowed.");
+                        }
+                    });
+                    return value;
+                }
+            }
+        },
         walkIn: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
