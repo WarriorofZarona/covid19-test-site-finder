@@ -27,7 +27,17 @@ module.exports = app => {
                 break;
             default:
                 throw err;
-        }
+        };
+
+        db.Site.findAll({
+            include: [db.State, db.City],
+            where: {
+                [db.State.name]: state
+            }
+        })
+            .then(dbSite => res.json(dbSite))
+
+
 
     })
 
