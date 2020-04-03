@@ -12,15 +12,11 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             len: [1]
         },
-        cityId: {
-            type: DataTypes.INTEGER,
+        phone: {
+            type: DataTypes.STRING,
             allowNull: false,
-            len: [1]
-        },
-        stateId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            len: [1]
+            unique: true,
+            len: [1, 10]
         },
         walkIn: {
             type: DataTypes.BOOLEAN,

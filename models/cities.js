@@ -4,11 +4,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             len: [1]
-        },
-        stateId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            len: [1]
         }
     });
 
