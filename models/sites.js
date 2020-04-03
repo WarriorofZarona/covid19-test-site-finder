@@ -12,35 +12,11 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             len: [1]
         },
-        cityId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            len: [1]
-        },
-        stateId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            len: [1]
-        },
         phone: {
-            type: DataTypes.ARRAY(DataTypes.STRING),
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            validate: {
-                isValidPhoneNo: function (value) {
-                    if (!value) return value;
-
-                    var regexp = /^[0-9]+$/;
-                    var values = (Array.isArray(value)) ? value : [value];
-
-                    values.forEach(function (val) {
-                        if (!regexp.test(val)) {
-                            throw new Error("Number only is allowed.");
-                        }
-                    });
-                    return value;
-                }
-            }
+            len: [1, 10]
         },
         walkIn: {
             type: DataTypes.BOOLEAN,
