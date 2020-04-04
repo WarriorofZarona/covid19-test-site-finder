@@ -49,21 +49,14 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Site.associate = function (models) {
-        Site.belongsTo(models.State, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
-
-
-    Site.associate = function (models) {
         Site.belongsTo(models.City, {
             foreignKey: {
                 allowNull: false
             }
         });
     };
+
+
 
     return Site;
 };

@@ -2,16 +2,16 @@ const db = require("../models");
 
 module.exports = app => {
 
-    app.get("/api", (req, res) => {
+    app.get("/api/sites", (req, res) => {
 
         db.Site.findAll({
-            include: [db.State, db.City]
+            include: [db.City]
         })
             .then(dbSite => res.json(dbSite))
 
     });
 
-    app.get("/api/:state", (req, res) => {
+    app.get("/api/states/:state", (req, res) => {
 
         let state;
 
@@ -30,7 +30,7 @@ module.exports = app => {
         };
 
         db.Site.findAll({
-            include: [db.State, db.City],
+            include: [db.City],
             where: {
                 [db.State.name]: state
             }
