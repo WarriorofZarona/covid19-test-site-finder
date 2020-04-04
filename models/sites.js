@@ -44,9 +44,12 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             len: [1]
 
+        },
+    },
+        {
+            paranoid: true
         }
-
-    });
+    );
 
     Site.associate = function (models) {
         Site.belongsTo(models.City, {
