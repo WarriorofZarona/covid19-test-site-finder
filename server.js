@@ -1,9 +1,9 @@
 const express = require("express");
-var session = require("express-session");
-var passport = require("./config/passport");
+const session = require("express-session");
+const passport = require("./config/passport");
 
 const app = express();
-const PORT = process.env.PORT || 4200;
+const PORT = process.env.PORT || 8080;
 
 const db = require("./models");
 
@@ -16,10 +16,12 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+require("./routes/api-signin")(app);
+require("./routes/html-signin")(app);
 // require("./routes/html-routes.js")(app);
-//require("./routes/api-routes.js")(app);
-require("./routes/api-signup")(app);
-require("./routes/html-signup")(app);
+// require("./routes/api-routes.js")(app);
+
 
 
 
