@@ -16,14 +16,14 @@ module.exports = app => {
         let state;
 
         switch (req.params.state) {
-            case "new-york":
-                state = NY;
-                break;
             case "new-jersey":
-                state = NJ;
+                stateId = 1;
+                break;
+            case "new-york":
+                stateId = 2;
                 break;
             case "pennsylvania":
-                state = PA;
+                stateId = 3;
                 break;
             default:
                 throw err;
@@ -32,7 +32,7 @@ module.exports = app => {
         db.Site.findAll({
             include: [db.City],
             where: {
-                [db.State.name]: state
+                stateId: stateId
             }
         })
             .then(dbSite => res.json(dbSite))
