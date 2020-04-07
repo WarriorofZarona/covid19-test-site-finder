@@ -2,7 +2,6 @@ const express = require("express");
 var session = require("express-session");
 var passport = require("./config/passport");
 const axios = require("axios");
-const populate = require("./db/populateCity")
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -24,8 +23,6 @@ require("./routes/html-signin")(app);
 // require("./routes/html-routes.js")(app);
 // require("./routes/api-routes.js")(app);
 
-
-// populate();
 
 
 // =============================================================
