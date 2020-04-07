@@ -44,18 +44,12 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             len: [1]
 
+        },
+    },
+        {
+            paranoid: true
         }
-
-    });
-
-    Site.associate = function (models) {
-        Site.belongsTo(models.State, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
-
+    );
 
     Site.associate = function (models) {
         Site.belongsTo(models.City, {
@@ -64,6 +58,8 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
     };
+
+
 
     return Site;
 };
