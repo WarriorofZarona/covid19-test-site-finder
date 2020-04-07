@@ -10,12 +10,6 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     State.associate = function (models) {
-        State.hasMany(models.Site, {
-            onDelete: "cascade"
-        });
-    };
-
-    State.associate = function (models) {
         State.hasMany(models.City, {
             onDelete: "cascade"
         });

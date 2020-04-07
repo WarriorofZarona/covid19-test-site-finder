@@ -1,9 +1,11 @@
 const express = require("express");
 var session = require("express-session");
 var passport = require("./config/passport");
+const axios = require("axios");
+const populate = require("./db/populateCity")
 
 const app = express();
-const PORT = process.env.PORT || 4200;
+const PORT = process.env.PORT || 8080;
 
 const db = require("./models");
 
@@ -17,10 +19,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // require("./routes/html-routes.js")(app);
-//require("./routes/api-routes.js")(app);
+require("./routes/api-routes.js")(app);
 require("./routes/api-signup")(app);
 require("./routes/html-signup")(app);
 
+populate();
 
 
 // =============================================================
