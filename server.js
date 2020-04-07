@@ -1,5 +1,4 @@
 const express = require("express");
-
 var session = require("express-session");
 var passport = require("./config/passport");
 const axios = require("axios");
@@ -24,8 +23,6 @@ require("./routes/api-signin")(app);
 require("./routes/html-signin")(app);
 // require("./routes/html-routes.js")(app);
 // require("./routes/api-routes.js")(app);
-require("./routes/api-signup")(app);
-require("./routes/html-signup")(app);
 
 
 populate();
