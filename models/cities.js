@@ -13,6 +13,19 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         });
+
+        City.getByState = (stateID, callback) => {
+            let StateID = parseInt(stateID);
+            console.log("StateID=" + StateID);
+            City.findAll({
+                where: {
+                    StateId: StateID
+                }
+            }).then(function (results) {
+                callback(results);
+            });
+        }
+
         City.hasMany(models.Site);
     }
 
