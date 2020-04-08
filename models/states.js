@@ -3,17 +3,17 @@ module.exports = function (sequelize, DataTypes) {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [1, 2]
-            }
         }
     });
 
     State.associate = function (models) {
         State.hasMany(models.City, {
-            onDelete: "cascade"
+            foreignKey: {
+                allowNull: false
+            }
         });
-    };
+
+    }
 
     return State;
 };

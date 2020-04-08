@@ -23,12 +23,61 @@ require("./routes/html-signin")(app);
 // require("./routes/html-routes.js")(app);
 // require("./routes/api-routes.js")(app);
 
+app.get("/cities/:state", function (req, res) {
+    let stateID = req.params.state;
+    db.City.getByState(stateID, function (result) {
+        res.json(result);
+    });
+});
+
+
 
 
 // =============================================================
-db.sequelize.sync({ force: false }).then(function () {
-    app.listen(PORT, function () {
-        console.log("App listening on PORT " + PORT);
+db.sequelize.sync({ force: true, logging: false }).then(() => {
+    readData(db);
+    app.listen(PORT, () => {
+        console.log(`Listening on port: ${PORT}`);
     });
-})
+});
+
+const readData = (db) => {
+    var fs = require("fs");
+    const content = fs.readFileSync("./db/cityState.json");
+    const jsonData = JSON.parse(content);
+    db.State.create({
+        name: "New Jersey"
+    }).then(function () {
+        db.State.create({
+            name: "New York"
+        }).then(function () {
+            db.State.create({
+                name: "Pennsylvania"
+            }).then(function () {
+                jsonData.forEach(cityElement => {
+                    let StateID = 0;
+                    switch (cityElement.state) {
+                        case "New Jersey":
+                            StateID = 1;
+                            break;
+                        case "New York":
+                            StateID = 2;
+                            break;
+                        case "Pennsylvania":
+                            StateID = 3;
+                            break;
+                        default:
+                            StateID = -1
+                    }
+                    if (StateID != -1) {
+                        db.City.create({
+                            StateId: StateID,
+                            name: cityElement.city
+                        }, { logging: false })
+                    }
+                });
+            });
+        })
+    })
+};
 
