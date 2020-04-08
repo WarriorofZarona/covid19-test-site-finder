@@ -68,3 +68,11 @@ i.faSteps {
 .submissionForm {
     text-align: left;
 }
+
+h2 {
+    text-align: center;
+}
+
+.step {
+    padding-left: 15px;
+}
