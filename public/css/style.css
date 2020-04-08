@@ -314,3 +314,16 @@ h2 {
         font-weight: 600
     }
 }
+
+h1 {
+    padding-top: 40px;
+}
+
+form .submit {
+    background-color: mediumaquamarine;
+    color: white;
+}
+
+form .submit:hover {
+    background-color: mediumseagreen;
+}
