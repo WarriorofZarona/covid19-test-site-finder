@@ -18,6 +18,7 @@ module.exports = function (sequelize, DataTypes) {
             let StateID = parseInt(stateID);
             console.log("StateID=" + StateID);
             City.findAll({
+                include: [models.State],
                 where: {
                     StateId: StateID
                 }
