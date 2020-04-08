@@ -21,16 +21,7 @@ app.use(passport.session());
 require("./routes/api-signin")(app);
 require("./routes/html-signin")(app);
 // require("./routes/html-routes.js")(app);
-// require("./routes/api-routes.js")(app);
-
-app.get("/cities/:state", function (req, res) {
-    let stateID = req.params.state;
-    db.City.getByState(stateID, function (result) {
-        res.json(result);
-    });
-});
-
-
+require("./routes/api-routes.js")(app);
 
 
 // =============================================================

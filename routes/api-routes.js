@@ -13,10 +13,25 @@ module.exports = app => {
     });
 
     app.get("/cities/:state", function (req, res) {
-        let stateID = req.params.state;
-        db.City.getByState(stateID, function (result) {
-            console.log(result[1]);
-        });
+        let stateID = 0;
+        switch (req.params.state) {
+            case "new-jersey":
+                stateID = 1;
+                break;
+            case "new-york":
+                stateID = 2;
+                break;
+            case "pennsylvania":
+                stateID = 3;
+                break;
+            default:
+                throw err;
+        };
+        if (stateID != -1) {
+            db.City.getByState(stateID, function (result) {
+                res.json(result);
+            })
+        };
     });
 
     // app.get("/api/sites/:state", (req, res) => {
