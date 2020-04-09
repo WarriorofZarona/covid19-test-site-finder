@@ -1,11 +1,7 @@
 $(document).ready(function() {
     // This file just does a GET request to get testing locations
     // and updates the HTML on the page
-    $.get("api/sites").then(function(data) {
-
-        /*  for (let i = 0; i < 10; i++) {
-              $(".testingLocations").text(JSON.stringify(data[i].name));
-          } */
+    $.get("api/sites/approved").then(function(data) {
 
         var njData = '';
         $.each(data, function(i, value) {
