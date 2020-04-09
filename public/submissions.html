@@ -44,26 +44,24 @@
 
     </nav>
 
-    <div class="container submissionForm">
-
-
+    <div class="container submissionForm form-horizontal" role="form" method="post" id="myForm">
         <h1 class="mb-5">Submit a Testing Site</h1>
         <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Location Name</label>
-                    <input class="form-control" placeholder="Please enter the name of the testing facility">
+                    <input class="form-control" placeholder="Please enter the name of the testing facility" name="name">
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="example-tel-input">Telephone</label>
-                    <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
+                    <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input" name="phone">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address">
             </div>
 
             <div>
@@ -88,29 +86,39 @@
                 <label for="inputAddress">Hours of Operation</label>
                 <div class="form-group row">
                     <div class="col-5">
-                        <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+                        <input class="form-control" type="time" value="13:45:00" id="example-time-input" name="open">
                     </div>
                     <p>to</p>
                     <div class="col-6">
-                        <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+                        <input class="form-control" type="time" value="13:45:00" id="example-time-input" name="close">
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label for="inputAddress">Qualifications</label>
+                    <input type="text" class="form-control" id="qualifications" placeholder="Are there any qualifications to get tested?" name="qualifications">
+                </div>
 
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" name="walkin">
                     <label class="form-check-label" for="inlineCheckbox1">Walk-in</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" name="drivethru">
                     <label class="form-check-label" for="inlineCheckbox2">Drive-thru</label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" name="hospital">
+                    <label class="form-check-label" for="inlineCheckbox2">Hospital</label>
+                </div>
+
                 <br/>
 
+                <button type="submit" class="btn submit" name="submit" value="Submit Form">Submit</button>
 
-                <button type="submit" class="btn submit">Submit</button>
         </form>
+
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="//geodata.solutions/includes/statecity.js"></script>
