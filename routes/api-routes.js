@@ -10,9 +10,6 @@ module.exports = app => {
                 model: db.City,
                 include: db.State,
             }],
-            where: {
-                approved: 0
-            }
         })
             .then(dbSite => res.json(dbSite))
 
