@@ -9,10 +9,10 @@ module.exports = app => {
             include: [db.City, {
                 model: db.City,
                 include: db.State,
-                where: {
-                    approved: 1
-                }
-            }]
+            }],
+            where: {
+                approved: 0
+            }
         })
             .then(dbSite => res.json(dbSite))
 
@@ -46,10 +46,11 @@ module.exports = app => {
             include: [db.City, {
                 model: db.City,
                 include: db.State,
-                where: {
-                    approved: 0
-                }
-            }]
+
+            }],
+            where: {
+                approved: 0
+            }
         })
             .then(dbSite => res.json(dbSite))
 
