@@ -6,7 +6,10 @@ module.exports = app => {
     app.get("/api/sites", (req, res) => {
 
         db.Site.findAll({
-            include: [db.City]
+            include: [db.City, {
+                model: db.City,
+                include: db.State
+            }]
         })
             .then(dbSite => res.json(dbSite))
 
