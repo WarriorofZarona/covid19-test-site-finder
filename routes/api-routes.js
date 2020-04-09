@@ -97,21 +97,45 @@ module.exports = app => {
         const isHospital = req.body.isHospital
         const hoursOfOp = req.body.hoursOfOp
         const qualifications = req.body.qualifications
+        const city = req.body.city
+        const state = req.body.state
         let cityId;
-        let stateId;
+
+        console.log(req.body);
 
         db.City.findAll({
-            attributes: [id]
+            attributes: ["id"],
+            where: {
+                name: city
+            }
+        }).then(data => {
+
+            cityId = data[0].id
+
         })
+            .then(() => {
+                db.Site.create({
+                    name: name,
+                    address: address,
+                    phone: phone,
+                    walkIn: walkIn,
+                    driveThru: driveThru,
+                    isHospital: isHospital,
+                    hoursOfOp: hoursOfOp,
+                    qualifications: qualifications,
+                    CityId: cityId,
+                }).then(data => res.json(data))
 
 
 
-        //drop down for city and state
-        // create city first
-        //dropdown for city, other
+
+                //drop down for city and state
+                // create city first
+                //dropdown for city, other
 
 
 
-    });
+            });
 
+    })
 }
