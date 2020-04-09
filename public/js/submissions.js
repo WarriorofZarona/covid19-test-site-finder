@@ -37,8 +37,8 @@ function submitRequest() {
     var close = $("#close").val();
     var walkIn = $("#walkin").val();
     var driveThru = $("#drivethru").val()
-    var isHospital = $("hospital").val()
-    var qualifications = $("qualifications").val()
+    var isHospital = $("#hospital").val()
+    var qualifications = $("#qualifications").val()
     $.ajax({
         type: "POST",
         url: '/api/sites',
