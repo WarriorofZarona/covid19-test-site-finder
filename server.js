@@ -80,6 +80,7 @@ const readData = (db) => {
                         isHospital: siteElement.isHospital,
                         hoursOfOp: siteElement.hoursOfOp,
                         qualifications: siteElement.qualifications,
+                        approved: 1,
                         CityId: siteElement.CityId,
                     }, { logging: false })
                 })
