@@ -25,7 +25,6 @@ function approveRequest() {
     $.ajax({
         type: "PUT",
         url: "/api/sites/" + this.id,
-
         success: function() {
             alert("Submission approved");
         }
