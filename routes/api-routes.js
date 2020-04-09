@@ -3,12 +3,15 @@ const sequelize = require("sequelize");
 
 module.exports = app => {
 
-    app.get("/api/sites", (req, res) => {
+    app.get("/api/sites/approved", (req, res) => {
 
         db.Site.findAll({
             include: [db.City, {
                 model: db.City,
-                include: db.State
+                include: db.State,
+                where: {
+                    approved: 1
+                }
             }]
         })
             .then(dbSite => res.json(dbSite))
@@ -37,57 +40,22 @@ module.exports = app => {
         };
     });
 
-    // app.get("/sites/:state", function (req, res) {
-    //     let stateID = 0;
-    //     switch (req.params.state) {
-    //         case "new-jersey":
-    //             stateID = 1;
-    //             break;
-    //         case "new-york":
-    //             stateID = 2;
-    //             break;
-    //         case "pennsylvania":
-    //             stateID = 3;
-    //             break;
-    //         default:
-    //             throw err;
-    //     };
-    //     if (stateID != -1) {
-    //         db.Site.getByState(stateID, function (result) {
-    //             res.json(result);
-    //         })
-    //     };
-    // });
+    app.get("/api/sites/pending", (req, res) => {
 
-    // app.get("/api/sites/:state", (req, res) => {
+        db.Site.findAll({
+            include: [db.City, {
+                model: db.City,
+                include: db.State,
+                where: {
+                    approved: 0
+                }
+            }]
+        })
+            .then(dbSite => res.json(dbSite))
 
-    //     let state;
+    });
 
-    //     switch (req.params.state) {
-    //         case "new-jersey":
-    //             stateId = 1;
-    //             break;
-    //         case "new-york":
-    //             stateId = 2;
-    //             break;
-    //         case "pennsylvania":
-    //             stateId = 3;
-    //             break;
-    //         default:
-    //             throw err;
-    //     };
-
-    //     db.Site.findAll({
-    //         include: [db.City],
-    //         where: {
-    //             stateId: stateId
-    //         }
-    //     })
-    //         .then(dbSite => res.json(dbSite))
-
-    // }),
-
-    app.post("/api/sites", (req, res) => {
+    app.post("/api/sites/", (req, res) => {
 
         const name = req.body.name
         const address = req.body.address
