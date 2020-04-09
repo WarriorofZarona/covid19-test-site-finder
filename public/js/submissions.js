@@ -25,3 +25,15 @@ $(document).ready(function() {
 
 
 });
+
+function submitRequest() {
+    $(".submissionForm").serialize() // returns all the data in your form
+    $.ajax({
+        type: "POST",
+        url: '/api/sites',
+        data: $(".submissionForm").serialize(),
+        success: function() {
+            console.log("success");
+        }
+    });
+}
