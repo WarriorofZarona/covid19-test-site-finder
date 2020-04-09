@@ -55,6 +55,7 @@ function submitRequest() {
         },
         success: function() {
             console.log("success");
+            alert("Submission received");
         }
     });
 }
