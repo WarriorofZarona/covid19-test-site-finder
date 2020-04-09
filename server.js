@@ -25,14 +25,15 @@ require("./routes/api-routes.js")(app);
 
 
 // =============================================================
-db.sequelize.sync({ force: true, logging: false }).then(() => {
-    readData(db);
+db.sequelize.sync({ force: true, logging: false }).then(async () => {
+    await readCityData(db);
+    await readSiteData(db);
     app.listen(PORT, () => {
         console.log(`Listening on port: ${PORT}`);
     });
 });
 
-const readData = (db) => {
+const readCityData = (db) => {
     var fs = require("fs");
     const content = fs.readFileSync("./db/cityState.json");
     const jsonData = JSON.parse(content);
@@ -70,6 +71,24 @@ const readData = (db) => {
             });
         })
     })
-
 };
 
+const readSiteData = (db) => {
+    var fs = require("fs");
+    const content = fs.readFileSync("./db/siteSeed.json");
+    const jsonData = JSON.parse(content);
+    jsonData.forEach(siteElement => {
+        console.log(siteElement.CityId);
+        db.Site.create({
+            name: siteElement.name,
+            address: siteElement.address,
+            phone: siteElement.phone,
+            walkIn: siteElement.walkIn,
+            driveThru: siteElement.driveThru,
+            isHospital: siteElement.isHospital,
+            hoursOfOp: siteElement.hoursOfOp,
+            qualifications: siteElement.qualifications,
+            CityId: siteElement.CityId,
+        }, { logging: false })
+    })
+};

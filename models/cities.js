@@ -14,6 +14,12 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
 
+        City.hasMany(models.Site, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+
         City.getByState = (stateID, callback) => {
             let StateID = parseInt(stateID);
             console.log("StateID=" + StateID);
@@ -27,8 +33,8 @@ module.exports = function (sequelize, DataTypes) {
             });
         }
 
-        City.hasMany(models.Site);
     }
+
 
     return City;
 };
