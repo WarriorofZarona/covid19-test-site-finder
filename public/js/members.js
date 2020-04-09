@@ -12,7 +12,7 @@ $(document).ready(function() {
             njData += '<td>' + data[i].City.State.name + '</td>';
             njData += '<td>' + data[i].phone + '</td>';
             njData += '<td>' + data[i].qualifications + '</td>';
-            njData += '<button type="button" class="btn btn-primary">' + Approved + '</button>';
+            njData += '<td>' + '<button type="button" class="btn btn-primary" onclick="approveRequest();">Approved</button>' + '</td>';
             njData += '</tr>'
         });
         $('#testLocationTable').append(njData)
@@ -20,3 +20,14 @@ $(document).ready(function() {
 
 
 });
+
+function approveRequest() {
+    $.ajax({
+        type: "PUT",
+        url: "/api/sites/" + this.id,
+
+        success: function() {
+            alert("Submission approved");
+        }
+    });
+};
