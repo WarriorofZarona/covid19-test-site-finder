@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/WarriorofZarona/covid19-test-site-finder#readme",
   "dependencies": {
+    "aos": "^2.3.4",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
@@ -27,7 +28,8 @@
     "mysql2": "^2.1.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "sequelize": "^5.21.6"
+    "sequelize": "^5.21.6",
+    "yarn": "^1.22.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
