@@ -54,7 +54,6 @@ function submitRequest() {
             city: city,
         },
         success: function() {
-            console.log("success");
             alert("Submission received");
         }
     });
