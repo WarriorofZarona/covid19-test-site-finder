@@ -30,7 +30,7 @@ function submitRequest() {
     $(".submissionForm").serialize() // returns all the data in your form
     var name = $("#name").val();
     var phone = $("#phone").val();
-    var address = $("address").val();
+    var address = $("#address").val();
     var state = $("#state").val();
     var city = $("#city").val();
     var open = $("#open").val();
@@ -55,7 +55,6 @@ function submitRequest() {
         },
         success: function() {
             console.log("success");
-            console.log();
         }
     });
 }
