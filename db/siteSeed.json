@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Kean University",
+        "address": "1000 Morris Ave",
+        "phone": "908-373-5105",
+        "walkIn": false,
+        "driveThru": true,
+        "isHospital": false,
+        "hoursOfOp": "8:00 am to 5:00 pm",
+        "qualifications": "Union County residents can report symptoms and schedule testing by calling 908-373-5105 or 908-214-7107. In addition to Union County residents, this testing site is open to all front-line health care workers and members of law enforcement, fire personnel, and EMTs from across the state. If you are experiencing symptoms and believe you need to be tested, visit ucnj.org for information on making an appointment. For the safety, health and security of the volunteers at the site, the testing location will not allow patients without vehicles to enter campus, even with a valid prescription and appointment. If you do not have your own transportation, please discuss with your healthcare provider before scheduling an appointment",
+        "CityId": 227
+    },
+    {
+        "name": "Jersey City Public Works",
+        "address": "575 Route 440",
+        "phone": "201-574-5535",
+        "walkIn": false,
+        "driveThru": true,
+        "isHospital": false,
+        "hoursOfOp": "9:30 am to 5:00 pm",
+        "qualifications": "Jersey city residents, by appointment only.",
+        "CityId": 100
+    },
+    {
+        "name": "Bergen County Community College",
+        "address": "400 Paramus Rd",
+        "phone": "NA",
+        "walkIn": false,
+        "driveThru": true,
+        "isHospital": false,
+        "hoursOfOp": "8:00 am to 5:00 pm",
+        "qualifications": "Community-Based Testing Sites are for individuals who are experiencing symptoms of respiratory illness. In order to be eligible for testing, individuals must be current New Jersey residents and experiencing symptoms of respiratory illness. Priority will be given to symptomatic individuals experiencing cough, fever (99.6F or above) and shortness of breath.",
+        "CityId": 168
+    }
+]
