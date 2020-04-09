@@ -78,6 +78,7 @@ const readSiteData = (db) => {
     const content = fs.readFileSync("./db/siteSeed.json");
     const jsonData = JSON.parse(content);
     jsonData.forEach(siteElement => {
+        console.log(siteElement.CityId);
         db.Site.create({
             name: siteElement.name,
             address: siteElement.address,
@@ -87,7 +88,7 @@ const readSiteData = (db) => {
             isHospital: siteElement.isHospital,
             hoursOfOp: siteElement.hoursOfOp,
             qualifications: siteElement.qualifications,
-            CityId: siteElement.CityId
+            CityId: siteElement.CityId,
         }, { logging: false })
     })
 };
