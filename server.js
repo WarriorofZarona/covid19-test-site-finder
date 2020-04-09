@@ -20,7 +20,7 @@ app.use(passport.session());
 
 require("./routes/api-signin")(app);
 require("./routes/html-signin")(app);
-// require("./routes/html-routes.js")(app);
+require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
 
@@ -70,5 +70,6 @@ const readData = (db) => {
             });
         })
     })
+
 };
 
