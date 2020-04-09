@@ -64,7 +64,18 @@ module.exports = function (sequelize, DataTypes) {
         });
     };
 
-
+    Site.getByState = (stateID, callback) => {
+        let StateID = parseInt(stateID);
+        console.log("StateID=" + StateID);
+        Site.findAll({
+            include: [models.City],
+            where: {
+                StateId: StateID
+            }
+        }).then(function (results) {
+            callback(results);
+        });
+    }
 
     return Site;
 };
