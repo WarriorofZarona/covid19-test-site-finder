@@ -94,17 +94,19 @@ module.exports = app => {
                     qualifications: qualifications,
                     CityId: cityId,
                 }).then(data => res.json(data))
-
-
-
-
-                //drop down for city and state
-                // create city first
-                //dropdown for city, other
-
-
-
             });
+
+    })
+    app.put("/api/sites/:id", (req, res) => {
+
+        const id = req.params.id;
+
+        db.Site.update({
+            approved: 1
+        }, {
+            where: id
+        })
+            .then(data => res.json(data))
 
     })
 }
