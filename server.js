@@ -26,17 +26,18 @@ require("./routes/api-routes.js")(app);
 
 // =============================================================
 db.sequelize.sync({ force: true, logging: false }).then(async () => {
-    await readCityData(db);
-    await readSiteData(db);
+    await readData(db);
     app.listen(PORT, () => {
         console.log(`Listening on port: ${PORT}`);
     });
 });
 
-const readCityData = (db) => {
+const readData = (db) => {
     var fs = require("fs");
     const content = fs.readFileSync("./db/cityState.json");
     const jsonData = JSON.parse(content);
+    const contentSite = fs.readFileSync("./db/siteSeed.json");
+    const jsonDataSite = JSON.parse(contentSite);
     db.State.create({
         name: "New Jersey"
     }).then(function () {
@@ -67,28 +68,23 @@ const readCityData = (db) => {
                             name: cityElement.city
                         }, { logging: false })
                     }
-                });
-            });
+                })
+            }).then(function () {
+                jsonDataSite.forEach(siteElement => {
+                    db.Site.create({
+                        name: siteElement.name,
+                        address: siteElement.address,
+                        phone: siteElement.phone,
+                        walkIn: siteElement.walkIn,
+                        driveThru: siteElement.driveThru,
+                        isHospital: siteElement.isHospital,
+                        hoursOfOp: siteElement.hoursOfOp,
+                        qualifications: siteElement.qualifications,
+                        CityId: siteElement.CityId,
+                    }, { logging: false })
+                })
+            })
         })
     })
 };
 
-const readSiteData = (db) => {
-    var fs = require("fs");
-    const content = fs.readFileSync("./db/siteSeed.json");
-    const jsonData = JSON.parse(content);
-    jsonData.forEach(siteElement => {
-        console.log(siteElement.CityId);
-        db.Site.create({
-            name: siteElement.name,
-            address: siteElement.address,
-            phone: siteElement.phone,
-            walkIn: siteElement.walkIn,
-            driveThru: siteElement.driveThru,
-            isHospital: siteElement.isHospital,
-            hoursOfOp: siteElement.hoursOfOp,
-            qualifications: siteElement.qualifications,
-            CityId: siteElement.CityId,
-        }, { logging: false })
-    })
-};
